@@ -34,7 +34,7 @@
     function C(n, k) {
         return jiecheng(n) / jiecheng(k) / jiecheng(n - k)
     }
-
+ 
     function jiecheng(n) {
         if (n >= 2) {
             return n * jiecheng(n - 1)
