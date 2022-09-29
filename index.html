@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form name="myform">
+    <label>n<input type="text" id="n"></label><br>
+    <label>p<input type="text" id="p"></label><br>
+    <label>min<input type="text" id="min"></label><br>
+    <label>max<input type="text" id="max"></label><br>
+    <label id="result">result</label><br>
+</form>
+<input type="button" onclick="caculate()" value="计算">
+</body>
+<script>
+    function caculate() {
+        const n = parseInt(myform.n.value);
+        const p = eval(myform.p.value);
+        const min = parseInt(myform.min.value);
+        const max = parseInt(myform.max.value);
+        document.getElementById("result").innerText = P(n, p, min, max);
+    }
+
+    function P(n, p, min, max) {
+        let res = 0
+        for (let i = min; i <= max; i++) {
+            res = res + C(n, i) * Math.pow(p,i) * Math.pow((1-p),(n-i));
+        }
+        return res
+    }
+
+    function C(n, k) {
+        return jiecheng(n) / jiecheng(k) / jiecheng(n - k)
+    }
+
+    function jiecheng(n) {
+        if (n >= 2) {
+            return n * jiecheng(n - 1)
+        }
+        return 1
+    }
+</script>
+<br>
+<br>
+</html>
